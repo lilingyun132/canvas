@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+		body{padding: 100px;}
+			canvas{background: gray;}
+		</style>
+	</head>
+	<body>
+		<canvas id = "myCanvas" height="200px" width="300px"></canvas>
+		<script type="text/javascript">
+			var myCanvas = document.getElementById("myCanvas");
+    		var context = myCanvas.getContext("2d");
+    		
+    		//颜色设置
+    		context.strokeStyle = 'red';	//线条颜色
+    		context.fillStyle = 'green';	//填充颜色
+    		
+    		//设置线宽
+    		context.lineWidth = 2;	
+    		
+    		//以beginPath方法开始绘制路径
+    		context.beginPath();
+			context.moveTo(0,0);//把路径移动到画布中的指定点，不创建线条;画布的左上角是(0,0)
+			context.lineTo(100,100);//添加一个新点，然后在画布中创建从该点到最后指定点的线条
+			context.lineTo(120,180);
+			context.closePath();//创建从当前点回到起始点的路径
+			//以closePath方法结束绘制路径
+			
+			context.stroke();//画线框
+   			context.fill();//填充颜色
+		</script>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			html,body{margin: 0;padding: 0;overflow: hidden;}
+			canvas{background: hsl(0,100%,45%);}
+		</style>
+	</head>
+	<body>
+		<canvas id = "myCanvas" width="320px" height="568px"></canvas>
+		<script type="text/javascript">
+			var myCanvas = document.getElementById("myCanvas");
+    		var c = myCanvas.getContext("2d");
+    		
+    		function show(){
+				var page = [320,568];
+				var midu = 80;	//平均每80px的正方形面积绘制一个三角形
+				var random
+				var _h_num = Math.ceil(page[0]/midu);
+				var _v_num = Math.ceil(page[1]/midu);
+				//返回三角形除了起点外其它两个点离起点的距离
+				function getl(){
+					return midu*Math.random()*1.5*(Math.random()>0.5?1:-1);
+				}
+				
+				for(var i=0;i<_h_num;i++){
+					for(var j=0;j<_v_num;j++){				
+						var _yd = [i*midu,j*midu];//绘制图形原点
+						var _qd = [_yd[0]+midu*Math.random(),_yd[1]+midu*Math.random()];//绘制图形起点
+						
+						_qd[0]==0?_qd[0]=Math.random()*midu:0;
+						_qd[1]==0?_qd[1]=Math.random()*midu:0;
+						var _other = [_qd[0]+getl(),_qd[1]+getl()];//记录一个点位置，渐变使用
+						console.log(_qd)
+						c.beginPath();
+						//起点确保在正方形内
+							
+						c.moveTo(_qd[0],_qd[1]);
+						//
+						c.lineTo(_other[0],_other[1]);
+						c.lineTo(_qd[0]+getl(),_qd[1]+getl());
+						c.closePath();
+						
+						//颜色设置   
+			    		var lGrd = c.createLinearGradient(_qd[0], _qd[1], _other[0], _other[1]);
+			    		var _color = 35+15*Math.random();
+						lGrd.addColorStop(0, 'hsl(0,100%,'+_color+'%)');
+						lGrd.addColorStop(1, 'hsl(0,100%,'+(_color+5)+'%)');
+						c.fillStyle = lGrd;
+			   			c.fill();//填充颜色					
+					}
+				}
+			}
+    		//setInterval(show);
+		</script>
+	</body>
+</html>

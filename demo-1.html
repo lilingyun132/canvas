@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body {
+				padding: 100px;
+			}
+			canvas {
+				background: gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" height="300px" width="400px"></canvas>
+		<script type="text/javascript">
+			var myCanvas = document.getElementById("myCanvas");
+			var context = myCanvas.getContext("2d");
+
+		
+				context.fillStyle = 'rgba(255,0,0,.3)'; //填充颜色
+				context.strokeStyle = 'hsl(120,50%,50%)'; //线条颜色
+				context.lineWidth = 1; //设置线宽
+				context.translate(100, 100); //原点移到x,y处，即要画的多边形中心				
+				context.beginPath();
+				context.moveTo(0, -50); //据中心r距离处画点
+				for (i = 0; i < 5; i++) {
+					context.rotate(Math.PI * 2 /5) //旋转
+					context.lineTo(0, -50); //据中心r距离处连线
+				}
+				context.closePath();
+				context.stroke();
+				context.fill();
+				
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			body {
+				padding: 100px;
+			}
+			canvas {
+				background: gray;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanvas" height="200px" width="300px"></canvas>
+		<script type="text/javascript">
+			var myCanvas = document.getElementById("myCanvas");
+			var context = myCanvas.getContext("2d");
+			 //颜色设置
+			context.strokeStyle = 'red'; //线条颜色
+			context.fillStyle = 'green'; //填充颜色
+			 //设置线宽
+			context.lineWidth = 2;
+			 //以beginPath方法开始绘制路径
+			//context.beginPath();
+			context.fillRect(10, 10, 100, 100);
+			context.strokeRect(10, 10, 100, 100);
+			context.closePath(); 
+		</script>
+	</body>
+
+</html>
